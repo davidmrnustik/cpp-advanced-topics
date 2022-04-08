@@ -4,6 +4,7 @@
 
 #include <cstdio>
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -25,6 +26,7 @@ public:
     Rational operator - ( const Rational & ) const;
     Rational operator * ( const Rational & ) const;
     Rational operator / ( const Rational & ) const;
+    operator string () const;
 };
 
 Rational & Rational::operator = ( const Rational &rhs ) {
@@ -51,10 +53,16 @@ Rational::~Rational() {
     _n = 0; _d = 0;
 }
 
+Rational::operator string () const {
+    if (_d == 1) return to_string(_n);
+    else return to_string(_n) + "/" + to_string(_d);
+}
+
 // for std::cout, non-member function operator
 std::ostream & operator << (std::ostream &o, const Rational &r) {
-    if (r.denominator() == 1) return o << r.numerator();
-    else return o << r.numerator() << '/' << r.denominator();
+//    if (r.denominator() == 1) return o << r.numerator();
+//    else return o << r.numerator() << '/' << r.denominator();
+    return o << string(r);
 }
 
 // if you have constructor that allows implicit conversions,
@@ -93,6 +101,10 @@ int main() {
     cout << b << " + " << 14 << " = " << b + 14 << endl;
 
     cout << 14 << " + " << b << " = " << 14 + b << endl;
+
+    string s = "Rational value is: ";
+    s += b;
+    cout << s << endl;
 
     return 0;
 }
