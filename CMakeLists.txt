@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.21)
 project(MasterCppCourse)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 add_executable(class class.cpp)
 add_executable(accessors accessors.cpp)
@@ -11,4 +11,5 @@ add_executable(constructors constructors.cpp)
 add_executable(implicit_explicit implicit-explicit.cpp)
 add_executable(namespace namespace.cpp)
 add_executable(rational rational.cpp)
-add_executable(increment_decrement.cpp increment-decrement.cpp)
+add_executable(increment_decrement increment-decrement.cpp)
+add_executable(count_primes count_primes.cpp)
