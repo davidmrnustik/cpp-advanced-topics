@@ -9,6 +9,7 @@ class c1 {
 public:
     void setValue( const int &);
     int getValue() const;
+    int getValue2() const;
 };
 
 void c1::setValue( const int & value) {
@@ -16,7 +17,13 @@ void c1::setValue( const int & value) {
 }
 
 int c1::getValue() const {
+    printf("getValue: this is: %p\n", this);
     return i;
+}
+
+int c1::getValue2() const {
+    printf("getValue2\n");
+    return this->getValue();
 }
 
 int main() {
@@ -32,6 +39,9 @@ int main() {
     o2 = o1;
     printf("value is %d\n", o2.getValue());
     printf("value is %d\n", o1.getValue());
+
+    printf("address of o1 is %p\n", &o1);
+    printf("value is %d\n", o1.getValue2());
 
     return 0;
 }
